@@ -38,4 +38,11 @@ http://localhost:8180/collectionspace/ui/core/html/
 http://10.11.12.45:8180/collectionspace/ui/core/html/
 ```
 
+Troubleshooting
+---------------
+
+**vagrant up - error "the guest machine entered an invalid state"**
+
+Ensure VT-x is enabled.
+
 ---
