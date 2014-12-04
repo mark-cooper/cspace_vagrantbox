@@ -6,8 +6,20 @@ Create a CollectionSpace server using vagrant and the one-click-installer with a
 Requirements
 ------------
 
+_Software_
+
 - [Virtualbox](https://www.virtualbox.org)
 - [Vagrant](https://www.vagrantup.com)
+
+After installing vagrant run:
+
+```
+vagrant plugin install vagrant-vbguest
+```
+
+_Hardware_
+
+A CPU that supports virtualization and 4GB RAM for the VM.
 
 Installation
 ------------
@@ -26,7 +38,7 @@ To access the server:
 vagrant ssh
 ```
 
-To the complete the installation follow the instruction from the "After installation" section of the [CollectionSpace wiki](http://wiki.collectionspace.org/display/DOC/Automated+installer+for+CollectionSpace+4.1).
+To complete the installation follow the instructions from the "After installation" section of the [CollectionSpace wiki](http://wiki.collectionspace.org/display/DOC/Automated+installer+for+CollectionSpace+4.1).
 
 To access CollectionSpace in the browser:
 
@@ -38,10 +50,30 @@ http://localhost:8180/collectionspace/ui/core/html/
 http://10.11.12.45:8180/collectionspace/ui/core/html/
 ```
 
+Starting over
+-------------
+
+```
+vagrant destroy
+vagrant up
+```
+
 Troubleshooting
 ---------------
 
-**vagrant up - error "the guest machine entered an invalid state"**
+**Error: "invalid byte sequence in US-ASCII"**
+
+Not sure what provokes this. Follow the starting over steps.
+
+**Error: "out of memory"**
+
+If provisioning fails during the build phase re-run it:
+
+```
+vagrant provision
+```
+
+**Error: "the guest machine entered an invalid state"**
 
 Ensure VT-x is enabled.
 
