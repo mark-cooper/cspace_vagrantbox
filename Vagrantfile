@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
     app.vm.network :forwarded_port, guest: 8180, host: 8180
 
     app.vm.provider "virtualbox" do |v|
-      v.customize ["modifyvm", :id, "--memory", 2048]
+      v.customize ["modifyvm", :id, "--memory", 4096]
       if not RUBY_PLATFORM.downcase.include?("mswin")
         v.customize ["modifyvm", :id, "--cpus", `awk "/^processor/ {++n} END {print n}" /proc/cpuinfo 2> /dev/null || sh -c 'sysctl hw.logicalcpu 2> /dev/null || echo ": 2"' | awk \'{print \$2}\' `.chomp ]
       end
