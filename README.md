@@ -61,6 +61,26 @@ vagrant up
 Troubleshooting
 ---------------
 
+**Error: "A customization command failed"**
+
+Windows issue. Replace:
+
+```
+v.customize ["modifyvm", :id, "--cpus", `awk "/^processor/ {++n} END {print n}" /proc/cpuinfo 2> /dev/null || sh -c 'sysctl hw.logicalcpu 2> /dev/null || echo ": 2"' | awk \'{print \$2}\' `.chomp ]
+```
+
+With:
+
+```
+v.customize ["modifyvm", :id, "--cpus", 2 ]
+```
+
+Where `2` should equal the number of cpu cores available.
+
+**Error: "executable 'bdstar' vagrant is trying to run ...**
+
+This is an upgrade issue on Windows. Uninstall and reinstall vagrant.
+
 **Error: "invalid byte sequence in US-ASCII"**
 
 Not sure what provokes this. Follow the starting over steps.
