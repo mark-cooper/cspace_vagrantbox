@@ -1,6 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+CSPACE_STARTUP = "/usr/local/share/apache-tomcat-7.0.57/bin/startup.sh"
+
 Vagrant.configure("2") do |config|
 
   config.vm.define "cspace" do |app|
@@ -18,6 +20,9 @@ Vagrant.configure("2") do |config|
     end
   end
 
-  config.vm.provision :shell, path: 'https://raw.github.com/cspace-puppet/cspace_puppet_bootstrap/master/scripts/bootstrap-cspace-modules.sh', args: "-y"
+  config.vm.provision :shell, path: 'https://raw.github.com/cspace-puppet/cspace_puppet_bootstrap/v4.2/scripts/bootstrap-cspace-modules.sh', args: "-y"
+  config.vm.provision :shell, inline: "#{CSPACE_STARTUP} &"
+  config.vm.provision :shell, inline: "echo 'Waiting for CollectionSpace to start ...' && sleep 60"
+  config.vm.provision :shell, path: 'https://raw.githubusercontent.com/collectionspace/Tools/v4.2/scripts/init-authorities.sh'
 
 end

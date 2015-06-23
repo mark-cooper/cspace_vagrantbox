@@ -1,7 +1,7 @@
 cspace_vagrantbox
 =================
 
-Create a CollectionSpace server using vagrant and the one-click-installer with a single command.
+Create a CollectionSpace server using vagrant and the one-click-installer with a single command. This will work for Windows, OSX or Linux.
 
 Requirements
 ------------
@@ -24,7 +24,7 @@ A CPU that supports virtualization and 4GB RAM for the VM.
 Installation
 ------------
 
-Download the repository then:
+Download this repository then move into a version folder (i.e. `cd cspace_vagrantbox/4.2`). Then:
 
 ```
 vagrant up
@@ -38,8 +38,6 @@ To access the server:
 vagrant ssh
 ```
 
-To complete the installation follow the instructions from the "After installation" section of the [CollectionSpace wiki](http://wiki.collectionspace.org/display/DOC/Automated+installer+for+CollectionSpace+4.1).
-
 To access CollectionSpace in the browser:
 
 ```
@@ -49,6 +47,8 @@ http://localhost:8180/collectionspace/ui/core/html/
 # or via the ip address of the vagrant box
 http://10.11.12.45:8180/collectionspace/ui/core/html/
 ```
+
+_Note: CollectionSpace is running as root, this is for local testing only._
 
 Starting over
 -------------
